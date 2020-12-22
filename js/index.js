@@ -9,11 +9,8 @@ class CountdownTimer {
   }
 
   count() {
-    setInterval(() => {
-      let time = this.targetDate - Date.now();
-      const times = this.getTimeComponents(time);
-      this.updateClock(times);
-    }, 1000)
+    this.counterTime();
+    setInterval(() => {this.counterTime()}, 1000)
   };
 
   getTimeComponents(time) {
@@ -33,6 +30,12 @@ class CountdownTimer {
     this.hours.textContent = hours;
     this.mins.textContent = mins;
     this.secs.textContent = secs;
+  }
+
+  counterTime() {
+    let time = this.targetDate - Date.now();
+    const times = this.getTimeComponents(time);
+    this.updateClock(times);
   }
 }
 
